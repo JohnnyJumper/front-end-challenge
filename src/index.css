@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --custom-usdc-color: #263238;
+}
+
+body {
+  letter-spacing: 0.497px;
+}
