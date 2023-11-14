@@ -1,10 +1,18 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { strategyColors, strategyMap } from "../signals/strategy-colors";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function PieChart() {
+  const colors = ["#855CF8", "#E289F2", "#7879F1", "#B085FF"];
+
+  const strategyMap: Record<string, string> = {
+    "Stategy 1": colors[0],
+    "Stategy 2": colors[1],
+    "Stategy 3": colors[2],
+    "Stategy 4": colors[3],
+  };
+
   return (
     <div className="h-440 w-420 rounded-md bg-white text-black shadow-md">
       <div className="flex justify-between p-4">
@@ -17,9 +25,10 @@ export default function PieChart() {
             labels: ["Stategy1", "Stategy2", "Stategy3", "Stategy4"],
             datasets: [
               {
-                label: "My First Dataset",
+                label: "Stategy breakdown",
                 data: [500, 125, 125, 250],
-                backgroundColor: [...strategyColors.value],
+                backgroundColor: [...colors],
+                borderColor: "transparent",
               },
             ],
           }}
@@ -29,11 +38,12 @@ export default function PieChart() {
                 display: false,
               },
             },
+            rotation: 180,
           }}
         />
       </div>
       <div className="flex justify-center px-4 pb-16 pt-10">
-        {Object.entries(strategyMap.value).map(([key, value], index) => (
+        {Object.entries(strategyMap).map(([key, value], index) => (
           <div
             key={index}
             className="flex flex-col items-center justify-center px-6px"

@@ -1,5 +1,4 @@
 import React from "react";
-import { colors } from "../signals/strategy-colors";
 
 enum Volatility {
   Low = "Low",
